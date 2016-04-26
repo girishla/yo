@@ -1,4 +1,5 @@
-﻿module elasticui.services {
+﻿    import {services} from "./services";
+    
     export class ElasticService {
         public client:any;
         private esFactory:any;
@@ -25,4 +26,4 @@
         }
     }
     services.service('es', ElasticService);
-}
+

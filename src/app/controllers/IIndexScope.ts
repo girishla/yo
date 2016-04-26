@@ -1,4 +1,7 @@
-﻿module elasticui.controllers {
+﻿import {IFilteredScope} from './IFilteredScope'
+import {SimpleSet} from "../util/SimpleSet";
+import {FilterCollection} from "../util/FilterCollection";
+
     export interface IIndexScope extends IFilteredScope {
         indexVM: IIndexViewModel;
         ejs: any;
@@ -8,8 +11,8 @@
         host: any;
         query: any;
         sort: any;
-        aggregationProviders: util.SimpleSet;
-        filters: util.FilterCollection;
+        aggregationProviders: SimpleSet;
+        filters: FilterCollection;
         highlight: any;
         loaded: boolean;
         loading: boolean;
@@ -22,4 +25,3 @@
         error: any;
         autoLoad: boolean;
     }
-}

@@ -1,6 +1,10 @@
+import {IIndexScope} from './IIndexScope'
+import {EjsTool} from "../util/EjsTool";
+
 module elasticui.controllers {
     export interface IFilterScope extends IIndexScope {
         filter: { filter: any; enabled: boolean };
+
     }
 
     export class FilterController {
@@ -8,7 +12,7 @@ module elasticui.controllers {
 
         static $inject = ['$scope'];
         constructor($scope: IFilterScope) {
-            this.scope = $scope;  
+            this.scope = $scope;
         }
 
         public init() {
@@ -27,8 +31,8 @@ module elasticui.controllers {
                 }
             });
 
-            this.scope.$watch('filter.filter', (newVal, oldVal) => { 
-                if (!util.EjsTool.equals(oldVal, newVal)) {
+            this.scope.$watch('filter.filter', (newVal, oldVal) => {
+                if (!EjsTool.equals(oldVal, newVal)) {
                     if (oldVal) {
                         this.scope.filters.remove(oldVal);
                     }

@@ -11,6 +11,7 @@ import { acmeNavbar } from '../app/components/navbar/navbar.directive';
 import { acmeMalarkey } from '../app/components/malarkey/malarkey.directive';
 
 import "./filters/filters";
+import "./controllers/controllers";
 
 declare var malarkey: any;
 declare var moment: moment.MomentStatic;

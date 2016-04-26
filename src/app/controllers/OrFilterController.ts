@@ -1,26 +1,26 @@
-module elasticui.controllers {
-    export class OrFilterController {
-        public filters = new util.FilterCollection();
-        private scope: any;
+import {FilterCollection} from "../util/FilterCollection";
+export class OrFilterController {
+  public filters = new FilterCollection();
+  private scope:any;
 
-        static $inject = ['$scope'];
-      
-        constructor($scope: any){
-            $scope.filters = this.filters;
-            $scope.$watchCollection('filters.ejsObjects', () => this.updateCombinedFilter());    
-            
-            this.scope = $scope;
-        }
+  static $inject = ['$scope'];
 
-        private updateCombinedFilter() {
-            if (this.scope.combinedFilter) {
-                this.scope.$parent.filters.remove(this.scope.combinedFilter);
-            }
+  constructor($scope:any) {
+    $scope.filters = this.filters;
+    $scope.$watchCollection('filters.ejsObjects', () => this.updateCombinedFilter());
 
-            this.scope.combinedFilter = this.filters.getAsORFilter();
-            if (this.scope.combinedFilter) {
-                this.scope.$parent.filters.add(this.scope.combinedFilter);
-            }
-        }
+    this.scope = $scope;
+  }
+
+  private updateCombinedFilter() {
+    if (this.scope.combinedFilter) {
+      this.scope.$parent.filters.remove(this.scope.combinedFilter);
     }
+
+    this.scope.combinedFilter = this.filters.getAsORFilter();
+    if (this.scope.combinedFilter) {
+      this.scope.$parent.filters.add(this.scope.combinedFilter);
+    }
+  }
 }
+

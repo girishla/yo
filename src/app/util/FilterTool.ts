@@ -1,5 +1,4 @@
-﻿module elasticui.util {
-    export class FilterTool {
+﻿    export class FilterTool {
         public static combineFilters(filters: any[]) {
             if (filters.length === 1) {
                 return filters[0];
@@ -18,4 +17,3 @@
             return null;
         }
     }
-}

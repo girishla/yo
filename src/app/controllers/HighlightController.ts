@@ -1,4 +1,5 @@
-module elasticui.controllers {
+
+    import {IIndexScope} from "./IIndexScope";
 
     export interface IHighlightScope extends IIndexScope {
         highlighting: { highlight: any; enabled: boolean };
@@ -41,4 +42,4 @@ module elasticui.controllers {
             return this.scope.indexVM.highlight != null && angular.equals(this.scope.indexVM.highlight.toJSON(), this.scope.highlighting.highlight.toJSON());
         }
     }
-}
+
