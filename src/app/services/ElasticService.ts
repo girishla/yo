@@ -25,5 +25,5 @@
             return true;
         }
     }
-    services.service('es', ElasticService);
+
 

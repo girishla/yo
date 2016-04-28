@@ -1,13 +1,12 @@
 import { MainController } from './main.controller';
-import { WebDevTecService } from '../components/webDevTec/webDevTec.service';
 
 describe('controllers', () => {
   let mainController: MainController;
 
   beforeEach(angular.mock.module('yo'));
 
-  beforeEach(inject(($controller: angular.IControllerService, webDevTec: WebDevTecService, toastr: any) => {
-    webDevTec.data = [null, null, null, null, null];
+  beforeEach(inject(($controller: angular.IControllerService, toastr: any) => {
+
     spyOn(toastr, 'info').and.callThrough();
 
     mainController = $controller('MainController');
@@ -28,7 +27,5 @@ describe('controllers', () => {
     expect(mainController.classAnimation).toEqual('');
   }));
 
-  it('should define more than 5 awesome things', () => {
-    expect(mainController.awesomeThings.length === 5).toBeTruthy();
-  });
+
 });

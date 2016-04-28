@@ -6,12 +6,13 @@ import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
 import { MainController } from './main/main.controller';
 import { GithubContributor } from '../app/components/githubContributor/githubContributor.service';
-import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { acmeNavbar } from '../app/components/navbar/navbar.directive';
 import { acmeMalarkey } from '../app/components/malarkey/malarkey.directive';
 
 import "./filters/filters";
 import "./controllers/controllers";
+import "./directives/directives";
+import "./services/services"
 
 declare var malarkey: any;
 declare var moment: moment.MomentStatic;
@@ -31,6 +32,13 @@ module elasticui {
     .directive('acmeNavbar', acmeNavbar)
     .directive('acmeMalarkey', acmeMalarkey);*/
 
-  angular.module('elasticui', ['elasticsearch', 'elasticui.filters', 'elasticui.controllers', 'elasticui.services', 'elasticui.directives', 'elasticui.widgets.directives']);
+  angular.module('elasticui', ['elasticsearch', 'elasticui.filters', 'elasticui.controllers', 'elasticui.services', 'elasticui.directives','ui.router','toastr'])
+    .config(config)
+    .constant('euiHost', 'http://localhost:3000')
+    .config(routerConfig)
+    .run(runBlock)
+    .controller('MainController', MainController)
+    ; // ACTION: change to cluster address;
+
 
 }

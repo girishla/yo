@@ -1,5 +1,5 @@
-module elasticui.widgets.directives {
-    // The widgets show how to create reusable components on top of ElasticUI. 
+
+    // The widgets show how to create reusable components on top of ElasticUI.
     // You can also directly use the directive.template html in your front-end (see docs/widgets.md for more info)
     export class SimplePagingDirective {
         constructor() {
@@ -14,9 +14,8 @@ module elasticui.widgets.directives {
                 <li ng-if="indexVM.pageCount <= indexVM.page" class="disabled"><a href="">Next</a></li>\
                 <li ng-if="indexVM.pageCount > indexVM.page"><a href="" ng-click="indexVM.page=indexVM.page + 1">Next</a></li>\
             </ul>';
-            
+
             return directive;
         }
     }
-    directives.directive('euiSimplePaging', [SimplePagingDirective]);
-}
+

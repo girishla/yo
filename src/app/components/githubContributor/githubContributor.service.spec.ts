@@ -7,6 +7,7 @@ describe('service githubContributor', () => {
     expect(githubContributor).not.toBeNull();
   }));
 
+  
   describe('getContributors function', () => {
     it('should return data', inject((githubContributor: GithubContributor, $httpBackend: angular.IHttpBackendService) => {
       $httpBackend.when('GET',  githubContributor.apiHost + '/contributors?per_page=1').respond(200, [{pprt: 'value'}]);

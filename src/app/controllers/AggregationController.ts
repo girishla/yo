@@ -50,7 +50,10 @@ export class AggregationController {
   }
 
   private updateResults() {
-    var res = this.scope.indexVM.results;
+
+
+
+    var res = this.scope.indexVM && this.scope.indexVM.results;
     if (this.scope.aggregation.agg && res && res.aggregations) {
       var name = AggregationController.getAggName(this.scope.aggregation.agg);
 
@@ -103,3 +106,7 @@ export class AggregationController {
     return this.getAggregationExplicit(this.scope.aggregation.agg, this.scope.aggregation.filterSelf, filters);
   }
 }
+
+
+
+

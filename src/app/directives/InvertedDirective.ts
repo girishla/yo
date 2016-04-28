@@ -1,4 +1,3 @@
-module elasticui.directives {
     export class InvertedDirective {
         constructor() {
             var directive: ng.IDirective = {};
@@ -13,5 +12,4 @@ module elasticui.directives {
             return directive;
         }
     }
-    directives.directive('euiInverted', [InvertedDirective]);
-}
+

@@ -1,4 +1,5 @@
-module elasticui.directives {
+    import {AggregationController} from "../controllers/AggregationController";
+
     export class AggregationDirective {
         constructor() {
             var directive: ng.IDirective = {};
@@ -6,7 +7,7 @@ module elasticui.directives {
             directive.restrict = 'EAC';
             directive.scope = true;
 
-            directive.controller = controllers.AggregationController;
+            directive.controller = AggregationController;
             directive.link = function (scope:any, element:ng.IAugmentedJQuery, attrs: any, aggCtrl:any) {
                 scope.$watch(element.attr('eui-aggregation') + " | euiCached", (val:any) => scope.aggregation.agg = val);
 
@@ -27,5 +28,4 @@ module elasticui.directives {
             return directive;
         }
     }
-    directives.directive('euiAggregation', [elasticui.directives.AggregationDirective]);
-}
+

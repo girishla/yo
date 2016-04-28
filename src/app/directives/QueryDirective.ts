@@ -1,13 +1,13 @@
-module elasticui.directives {
+    import {QueryController} from "../controllers/QueryController";
     export class QueryDirective {
         constructor() {
             var directive: ng.IDirective = {};
             directive.restrict = 'A';
             directive.scope = true;
-            directive.controller = controllers.QueryController;
+            directive.controller = QueryController;
             directive.link = function (scope:any, element:ng.IAugmentedJQuery, attrs: any, queryCtrl:any) {
                 scope.$watch(element.attr('eui-query') + " | euiCached", (val:any) => scope.query.query= val);
-                
+
                 var enabled = false;
                 var enabledAttr = element.attr('eui-enabled');
                 if (enabledAttr) {
@@ -25,5 +25,4 @@ module elasticui.directives {
             return directive;
         }
     }
-    directives.directive('euiQuery', [QueryDirective]);
-}
+

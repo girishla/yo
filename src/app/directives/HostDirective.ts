@@ -1,11 +1,11 @@
-module elasticui.directives {
+    import {HostController} from "../controllers/HostController";
     export class HostDirective {
         constructor() {
             var directive: ng.IDirective = {};
             directive.restrict = 'A';
             directive.scope = true;
 
-            directive.controller = controllers.HostController;
+            directive.controller = HostController;
             directive.link = function (scope:any, element:ng.IAugmentedJQuery, attrs: any, hostCtrl:any) {
                 scope.$watch(element.attr('eui-host'), (val:any) => scope.host = val);
 
@@ -16,5 +16,5 @@ module elasticui.directives {
             return directive;
         }
     }
-    directives.directive('euiHost', [HostDirective]);
-}
+
+

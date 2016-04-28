@@ -1,4 +1,3 @@
-module elasticui.directives {
     // should not be used (for development purposes atm)
     export class VarDirective {
         static $inject = ['$timeout'];
@@ -22,5 +21,4 @@ module elasticui.directives {
             return directive;
         }
     }
-    directives.directive('euiVar', [VarDirective]);
-}
+

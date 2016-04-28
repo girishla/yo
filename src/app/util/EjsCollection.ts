@@ -1,4 +1,6 @@
-﻿export class EjsCollection {
+﻿import {EjsTool} from "./EjsTool";
+
+export class EjsCollection {
   public ejsObjects:any = [];
   private jsonObjects:any = [];
 
@@ -13,7 +15,6 @@
       this.jsonObjects.push(EjsTool.getJsonFromEjsObject(ejsObject));
     }
   }
-
   public remove(ejsObject:any) {
     var idx = this.indexOf(ejsObject);
     if (idx > -1) {
@@ -21,4 +22,5 @@
       this.jsonObjects.splice(idx, 1);
     }
   }
+
 }
