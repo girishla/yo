@@ -5,8 +5,8 @@ import samePassword from "./same-password.directive";
 import themeBackground from "./theme-background.directive";
 
 export default    angular
-  .module('uiCore.directives', [])
+  .module('uicore.directives', [])
   .directive('countupto', countupto)
   .directive('paletteBackground', paletteBackground)
-  .directive('uiCoreSamePassword', samePassword)
+  .directive('uicoreSamePassword', samePassword)
   .directive('themeBackground', themeBackground)

@@ -2,7 +2,7 @@
 
 
 /* @ngInject */
-export function skinsProvider($mdThemingProvider, triThemingProvider) {
+export function skinsProvider($mdThemingProvider, uicoreThemingProvider) {
   var skins = {};
   var currentSkin = null;
   var useSkinCookie = false;
@@ -13,7 +13,7 @@ export function skinsProvider($mdThemingProvider, triThemingProvider) {
         return skins[id];
       }
 
-      var skin = new Skin(id, name, $mdThemingProvider, triThemingProvider);
+      var skin = new Skin(id, name, $mdThemingProvider, uicoreThemingProvider);
 
       skins[id] = skin;
 
@@ -35,9 +35,9 @@ export function skinsProvider($mdThemingProvider, triThemingProvider) {
           $cookies = cookies;
         }]);
         // if we have a cookie set then override the currentSkin
-        var uiCoreSkin = $cookies.get('uiCore-skin');
-        if (angular.isDefined(uiCoreSkin)) {
-          var cookieTheme = angular.fromJson(uiCoreSkin);
+        var uicoreSkin = $cookies.get('uicore-skin');
+        if (angular.isDefined(uicoreSkin)) {
+          var cookieTheme = angular.fromJson(uicoreSkin);
           currentSkin = angular.isDefined(skins[cookieTheme.skin]) ? skins[cookieTheme.skin] : skins[0];
         }
       }
@@ -64,7 +64,7 @@ export function skinsProvider($mdThemingProvider, triThemingProvider) {
 }
 
 /* @ngInject */
-export function Skin(id, name, $mdThemingProvider, triThemingProvider) {
+export function Skin(id, name, $mdThemingProvider, uicoreThemingProvider) {
   var THEMABLE_ELEMENTS = ['sidebar', 'logo', 'toolbar', 'content'];
   var self = this;
   self.id = id;
@@ -82,7 +82,7 @@ export function Skin(id, name, $mdThemingProvider, triThemingProvider) {
     // go through each element
     for (var element in self.elements) {
       // register theme with mdThemingProvider (will load css in the header)
-      var theme = triThemingProvider.theme(self.elements[element]);
+      var theme = uicoreThemingProvider.theme(self.elements[element]);
 
       $mdThemingProvider.theme(theme.name)
         .primaryPalette(theme.colors.primary.name, theme.colors.primary.hues)
@@ -102,6 +102,6 @@ export function Skin(id, name, $mdThemingProvider, triThemingProvider) {
 }
 
 /* @ngInject */
-export function addSkinToScope($rootScope, triSkins) {
-  $rootScope.triSkin = triSkins.getCurrent();
+export function addSkinToScope($rootScope, uicoreSkins) {
+  $rootScope.uicoreSkin = uicoreSkins.getCurrent();
 }

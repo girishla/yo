@@ -2,7 +2,7 @@
 import profilerConfig from "./profiler.config";
 
 export default angular
-  .module('uiCore.profiler', [
+  .module('uicore.profiler', [
     'digestHud'
   ])
   .config(profilerConfig);

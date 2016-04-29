@@ -1,60 +1,64 @@
-'use strict';
-
-
 /* @ngInject */
-export default    function routeConfig($stateProvider) {
+export default  function routeConfig($stateProvider) {
   $stateProvider
-    .state('uiCore', {
+    .state('elasticslice', {
+      abstract: true,
+      templateUrl: 'app/uicore/layouts/default/default.tmpl.html',
+      controller: 'DefaultLayoutController',
+      controllerAs: 'layoutController'
+    })
+    .state('elasticslice-no-scroll', {
+      abstract: true,
+      templateUrl: 'app/uicore/layouts/default/default-no-scroll.tmpl.html',
+      controller: 'DefaultLayoutController',
+      controllerAs: 'layoutController'
+    })
+    .state('elasticslice.admin-default', {
       abstract: true,
       views: {
-        'root': {
-          templateUrl: 'app/uiCore/layouts/states/uiCore/uiCore.tmpl.html',
-          controller: 'uiCoreStateController',
-          controllerAs: 'stateController'
-        },
-        'sidebarLeft@uiCore': {
-          templateProvider: function ($templateRequest, uiCoreLayout) {
-            if (angular.isDefined(uiCoreLayout.layout.sidebarLeftTemplateUrl)) {
-              return $templateRequest(uiCoreLayout.layout.sidebarLeftTemplateUrl);
-            }
-          },
-          controllerProvider: function (uiCoreLayout) {
-            return uiCoreLayout.layout.sidebarLeftController;
-          },
+        sidebarLeft: {
+          templateUrl: 'app/uicore/components/menu/menu.tmpl.html',
+          controller: 'MenuController',
           controllerAs: 'vm'
         },
-        'sidebarRight@uiCore': {
-          templateProvider: function ($templateRequest, uiCoreLayout) {
-            if (angular.isDefined(uiCoreLayout.layout.sidebarRightTemplateUrl)) {
-              return $templateRequest(uiCoreLayout.layout.sidebarRightTemplateUrl);
-            }
-          },
-          controllerProvider: function (uiCoreLayout) {
-            return uiCoreLayout.layout.sidebarRightController;
-          },
+        sidebarRight: {
+          templateUrl: 'app/uicore/components/notifications-panel/notifications-panel.tmpl.html',
+          controller: 'NotificationsPanelController',
           controllerAs: 'vm'
         },
-        'toolbar@uiCore': {
-          templateProvider: function ($templateRequest, uiCoreLayout) {
-            if (angular.isDefined(uiCoreLayout.layout.toolbarTemplateUrl)) {
-              return $templateRequest(uiCoreLayout.layout.toolbarTemplateUrl);
-            }
-          },
-          controllerProvider: function (uiCoreLayout) {
-            return uiCoreLayout.layout.toolbarController;
-          },
+        toolbar: {
+          templateUrl: 'app/uicore/components/toolbars/toolbar.tmpl.html',
+          controller: 'DefaultToolbarController',
           controllerAs: 'vm'
         },
-        'loader@uiCore': {
-          templateProvider: function ($templateRequest, uiCoreLayout) {
-            if (angular.isDefined(uiCoreLayout.layout.loaderTemplateUrl)) {
-              return $templateRequest(uiCoreLayout.layout.loaderTemplateUrl);
-            }
-          },
-          controllerProvider: function (uiCoreLayout) {
-            return uiCoreLayout.layout.loaderController;
-          },
-          controllerAs: 'loader'
+        content: {
+          template: '<div id="admin-panel-content-view" class="{{layout.innerContentClass}}" flex ui-view></div>'
+        },
+        belowContent: {
+          template: '<div ui-view="belowContent"></div>'
+        }
+      }
+    })
+    .state('elasticslice.admin-default-no-scroll', {
+      abstract: true,
+      views: {
+        sidebarLeft: {
+          templateUrl: 'app/uicore/components/menu/menu.tmpl.html',
+          controller: 'MenuController',
+          controllerAs: 'vm'
+        },
+        sidebarRight: {
+          templateUrl: 'app/uicore/components/notifications-panel/notifications-panel.tmpl.html',
+          controller: 'NotificationsPanelController',
+          controllerAs: 'vm'
+        },
+        toolbar: {
+          templateUrl: 'app/uicore/components/toolbars/toolbar.tmpl.html',
+          controller: 'DefaultToolbarController',
+          controllerAs: 'vm'
+        },
+        content: {
+          template: '<div flex ui-view layout="column" class="overflow-hidden"></div>'
         }
       }
     });

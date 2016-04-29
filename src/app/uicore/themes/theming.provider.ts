@@ -2,7 +2,7 @@
 
 
 /* @ngInject */
-export default function themingProvider($mdThemingProvider) {
+export function themingProvider($mdThemingProvider) {
   var themes = {};
 
   return {
@@ -48,7 +48,8 @@ export default function themingProvider($mdThemingProvider) {
   };
 }
 
-export default   function Theme(name) {
+
+export function Theme(name) {
   var THEME_COLOR_TYPES = ['primary', 'accent', 'warn', 'background'];
   var self = this;
   self.name = name;

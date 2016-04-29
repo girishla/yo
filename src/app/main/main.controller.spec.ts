@@ -5,9 +5,8 @@ describe('controllers', () => {
 
   beforeEach(angular.mock.module('yo'));
 
-  beforeEach(inject(($controller: angular.IControllerService, toastr: any) => {
+  beforeEach(inject(($controller: angular.IControllerService) => {
 
-    spyOn(toastr, 'info').and.callThrough();
 
     mainController = $controller('MainController');
   }));
@@ -21,11 +20,6 @@ describe('controllers', () => {
     expect(mainController.classAnimation).toEqual('rubberBand');
   }));
 
-  it('should show a Toastr info and stop animation when invoke showToastr()', inject((toastr: any) => {
-    mainController.showToastr();
-    expect(toastr.info).toHaveBeenCalled();
-    expect(mainController.classAnimation).toEqual('');
-  }));
 
 
 });

@@ -1,4 +1,4 @@
-.uiCore-non-scrolling {
+.uicore-non-scrolling {
   position: relative;
   z-index: 0;
   & > * {
@@ -10,11 +10,11 @@
   }
 }
 
-.uiCore-toolbar-and-content {
+.uicore-toolbar-and-content {
   position: relative;
 }
 
-.uiCore-loader {
+.uicore-loader {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -23,7 +23,7 @@
   z-index: 10;
 }
 
-.uiCore-sidenav-left._md-locked-open {
+.uicore-sidenav-left._md-locked-open {
   width: 260px;
   min-width: 260px;
   max-width: 260px;

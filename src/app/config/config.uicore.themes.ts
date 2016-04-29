@@ -1,225 +1,217 @@
-(function() {
-    'use strict';
+/* @ngInject */
+export default    function themesConfig($mdThemingProvider, uicoreThemingProvider, uicoreSkinsProvider) {
+  /**
+   *  PALETTES
+   */
+  $mdThemingProvider.definePalette('white', {
+    '50': 'ffffff',
+    '100': 'ffffff',
+    '200': 'ffffff',
+    '300': 'ffffff',
+    '400': 'ffffff',
+    '500': 'ffffff',
+    '600': 'ffffff',
+    '700': 'ffffff',
+    '800': 'ffffff',
+    '900': 'ffffff',
+    'A100': 'ffffff',
+    'A200': 'ffffff',
+    'A400': 'ffffff',
+    'A700': 'ffffff',
+    'contrastDefaultColor': 'dark'
+  });
 
-    angular
-        .module('elasticslice')
-        .config(themesConfig);
+  $mdThemingProvider.definePalette('black', {
+    '50': 'e1e1e1',
+    '100': 'b6b6b6',
+    '200': '8c8c8c',
+    '300': '646464',
+    '400': '3a3a3a',
+    '500': 'e1e1e1',
+    '600': 'e1e1e1',
+    '700': '232323',
+    '800': '1a1a1a',
+    '900': '121212',
+    'A100': '3a3a3a',
+    'A200': 'ffffff',
+    'A400': 'ffffff',
+    'A700': 'ffffff',
+    'contrastDefaultColor': 'light'
+  });
 
-    /* @ngInject */
-    function themesConfig ($mdThemingProvider, triThemingProvider, triSkinsProvider) {
-        /**
-         *  PALETTES
-         */
-        $mdThemingProvider.definePalette('white', {
-            '50': 'ffffff',
-            '100': 'ffffff',
-            '200': 'ffffff',
-            '300': 'ffffff',
-            '400': 'ffffff',
-            '500': 'ffffff',
-            '600': 'ffffff',
-            '700': 'ffffff',
-            '800': 'ffffff',
-            '900': 'ffffff',
-            'A100': 'ffffff',
-            'A200': 'ffffff',
-            'A400': 'ffffff',
-            'A700': 'ffffff',
-            'contrastDefaultColor': 'dark'
-        });
+  var triCyanMap = $mdThemingProvider.extendPalette('cyan', {
+    'contrastDefaultColor': 'light',
+    'contrastLightColors': '500 700 800 900',
+    'contrastStrongLightColors': '500 700 800 900'
+  });
 
-        $mdThemingProvider.definePalette('black', {
-            '50': 'e1e1e1',
-            '100': 'b6b6b6',
-            '200': '8c8c8c',
-            '300': '646464',
-            '400': '3a3a3a',
-            '500': 'e1e1e1',
-            '600': 'e1e1e1',
-            '700': '232323',
-            '800': '1a1a1a',
-            '900': '121212',
-            'A100': '3a3a3a',
-            'A200': 'ffffff',
-            'A400': 'ffffff',
-            'A700': 'ffffff',
-            'contrastDefaultColor': 'light'
-        });
+  // Register the new color palette map with the name triCyan
+  $mdThemingProvider.definePalette('triCyan', triCyanMap);
 
-        var triCyanMap = $mdThemingProvider.extendPalette('cyan', {
-            'contrastDefaultColor': 'light',
-            'contrastLightColors': '500 700 800 900',
-            'contrastStrongLightColors': '500 700 800 900'
-        });
+  /**
+   *  SKINS
+   */
 
-        // Register the new color palette map with the name triCyan
-        $mdThemingProvider.definePalette('triCyan', triCyanMap);
+  // CYAN CLOUD SKIN
+  uicoreThemingProvider.theme('cyan')
+    .primaryPalette('triCyan')
+    .accentPalette('amber')
+    .warnPalette('deep-orange');
 
-        /**
-         *  SKINS
-         */
+  uicoreThemingProvider.theme('default')
+    .primaryPalette('white')
+    .accentPalette('triCyan', {
+      'default': '500'
+    })
+    .warnPalette('deep-orange');
 
-        // CYAN CLOUD SKIN
-        triThemingProvider.theme('cyan')
-        .primaryPalette('triCyan')
-        .accentPalette('amber')
-        .warnPalette('deep-orange');
+  uicoreSkinsProvider.skin('cyan-cloud', 'Cyan Cloud')
+    .sidebarTheme('cyan')
+    .toolbarTheme('default')
+    .logoTheme('cyan')
+    .contentTheme('cyan');
 
-        triThemingProvider.theme('default')
-        .primaryPalette('white')
-        .accentPalette('triCyan', {
-            'default': '500'
-        })
-        .warnPalette('deep-orange');
+  // RED DWARF SKIN
+  uicoreThemingProvider.theme('red')
+    .primaryPalette('red')
+    .accentPalette('amber')
+    .warnPalette('purple');
 
-        triSkinsProvider.skin('cyan-cloud', 'Cyan Cloud')
-        .sidebarTheme('cyan')
-        .toolbarTheme('default')
-        .logoTheme('cyan')
-        .contentTheme('cyan');
+  uicoreThemingProvider.theme('white-red')
+    .primaryPalette('white')
+    .accentPalette('red', {
+      'default': '500'
+    })
+    .warnPalette('purple');
 
-        // RED DWARF SKIN
-        triThemingProvider.theme('red')
-        .primaryPalette('red')
-        .accentPalette('amber')
-        .warnPalette('purple');
+  uicoreSkinsProvider.skin('red-dwarf', 'Red Dwarf')
+    .sidebarTheme('red')
+    .toolbarTheme('white-red')
+    .logoTheme('red')
+    .contentTheme('red');
 
-        triThemingProvider.theme('white-red')
-        .primaryPalette('white')
-        .accentPalette('red', {
-            'default': '500'
-        })
-        .warnPalette('purple');
+  // PLUMB PURPLE SKIN
+  uicoreThemingProvider.theme('purple')
+    .primaryPalette('purple')
+    .accentPalette('deep-orange')
+    .warnPalette('amber');
 
-        triSkinsProvider.skin('red-dwarf', 'Red Dwarf')
-        .sidebarTheme('red')
-        .toolbarTheme('white-red')
-        .logoTheme('red')
-        .contentTheme('red');
+  uicoreThemingProvider.theme('white-purple')
+    .primaryPalette('white')
+    .accentPalette('purple', {
+      'default': '400'
+    })
+    .warnPalette('deep-orange');
 
-        // PLUMB PURPLE SKIN
-        triThemingProvider.theme('purple')
-        .primaryPalette('purple')
-        .accentPalette('deep-orange')
-        .warnPalette('amber');
+  uicoreSkinsProvider.skin('plumb-purple', 'Plumb Purple')
+    .sidebarTheme('purple')
+    .toolbarTheme('white-purple')
+    .logoTheme('purple')
+    .contentTheme('purple');
 
-        triThemingProvider.theme('white-purple')
-        .primaryPalette('white')
-        .accentPalette('purple', {
-            'default': '400'
-        })
-        .warnPalette('deep-orange');
+  // DARK KNIGHT SKIN
+  uicoreThemingProvider.theme('dark')
+    .primaryPalette('black', {
+      'default': '300',
+      'hue-1': '400'
+    })
+    .accentPalette('amber')
+    .warnPalette('deep-orange')
+    .backgroundPalette('black')
+    .dark();
 
-        triSkinsProvider.skin('plumb-purple', 'Plumb Purple')
-        .sidebarTheme('purple')
-        .toolbarTheme('white-purple')
-        .logoTheme('purple')
-        .contentTheme('purple');
+  uicoreSkinsProvider.skin('dark-knight', 'Dark Knight')
+    .sidebarTheme('dark')
+    .toolbarTheme('dark')
+    .logoTheme('dark')
+    .contentTheme('dark');
 
-        // DARK KNIGHT SKIN
-        triThemingProvider.theme('dark')
-        .primaryPalette('black', {
-            'default': '300',
-            'hue-1': '400'
-        })
-        .accentPalette('amber')
-        .warnPalette('deep-orange')
-        .backgroundPalette('black')
-        .dark();
+  // BATTLESHIP GREY SKIN
+  uicoreThemingProvider.theme('blue-grey')
+    .primaryPalette('blue-grey')
+    .accentPalette('amber')
+    .warnPalette('orange');
 
-        triSkinsProvider.skin('dark-knight', 'Dark Knight')
-        .sidebarTheme('dark')
-        .toolbarTheme('dark')
-        .logoTheme('dark')
-        .contentTheme('dark');
+  uicoreThemingProvider.theme('white-blue-grey')
+    .primaryPalette('white')
+    .accentPalette('blue-grey', {
+      'default': '400'
+    })
+    .warnPalette('orange');
 
-        // BATTLESHIP GREY SKIN
-        triThemingProvider.theme('blue-grey')
-        .primaryPalette('blue-grey')
-        .accentPalette('amber')
-        .warnPalette('orange');
+  uicoreSkinsProvider.skin('battleship-grey', 'Battleship Grey')
+    .sidebarTheme('blue-grey')
+    .toolbarTheme('white-blue-grey')
+    .logoTheme('blue-grey')
+    .contentTheme('blue-grey');
 
-        triThemingProvider.theme('white-blue-grey')
-        .primaryPalette('white')
-        .accentPalette('blue-grey', {
-            'default': '400'
-        })
-        .warnPalette('orange');
+  // ZESTY ORANGE SKIN
+  uicoreThemingProvider.theme('orange')
+    .primaryPalette('orange', {
+      'default': '800'
+    })
+    .accentPalette('lime')
+    .warnPalette('amber');
 
-        triSkinsProvider.skin('battleship-grey', 'Battleship Grey')
-        .sidebarTheme('blue-grey')
-        .toolbarTheme('white-blue-grey')
-        .logoTheme('blue-grey')
-        .contentTheme('blue-grey');
+  uicoreThemingProvider.theme('white-orange')
+    .primaryPalette('white')
+    .accentPalette('orange', {
+      'default': '500'
+    })
+    .warnPalette('lime');
 
-        // ZESTY ORANGE SKIN
-        triThemingProvider.theme('orange')
-        .primaryPalette('orange' , {
-            'default': '800'
-        })
-        .accentPalette('lime')
-        .warnPalette('amber');
-
-        triThemingProvider.theme('white-orange')
-        .primaryPalette('white')
-        .accentPalette('orange', {
-            'default': '500'
-        })
-        .warnPalette('lime');
-
-        triSkinsProvider.skin('zesty-orange', 'Zesty Orange')
-        .sidebarTheme('orange')
-        .toolbarTheme('white-orange')
-        .logoTheme('orange')
-        .contentTheme('orange');
+  uicoreSkinsProvider.skin('zesty-orange', 'Zesty Orange')
+    .sidebarTheme('orange')
+    .toolbarTheme('white-orange')
+    .logoTheme('orange')
+    .contentTheme('orange');
 
 
-        // INDIGO ISLAND SKIN
-        triThemingProvider.theme('indigo')
-        .primaryPalette('indigo' , {
-            'default': '600'
-        })
-        .accentPalette('red')
-        .warnPalette('lime');
+  // INDIGO ISLAND SKIN
+  uicoreThemingProvider.theme('indigo')
+    .primaryPalette('indigo', {
+      'default': '600'
+    })
+    .accentPalette('red')
+    .warnPalette('lime');
 
-        triSkinsProvider.skin('indigo-island', 'Indigo Island')
-        .sidebarTheme('indigo')
-        .toolbarTheme('indigo')
-        .logoTheme('indigo')
-        .contentTheme('indigo');
+  uicoreSkinsProvider.skin('indigo-island', 'Indigo Island')
+    .sidebarTheme('indigo')
+    .toolbarTheme('indigo')
+    .logoTheme('indigo')
+    .contentTheme('indigo');
 
-        // KERMIT GREEN SKIN
-        triThemingProvider.theme('light-green')
-        .primaryPalette('light-green' , {
-            'default': '400'
-        })
-        .accentPalette('amber')
-        .warnPalette('deep-orange');
+  // KERMIT GREEN SKIN
+  uicoreThemingProvider.theme('light-green')
+    .primaryPalette('light-green', {
+      'default': '400'
+    })
+    .accentPalette('amber')
+    .warnPalette('deep-orange');
 
-        triThemingProvider.theme('white-light-green')
-        .primaryPalette('white')
-        .accentPalette('light-green', {
-            'default': '400'
-        })
-        .warnPalette('deep-orange');
+  uicoreThemingProvider.theme('white-light-green')
+    .primaryPalette('white')
+    .accentPalette('light-green', {
+      'default': '400'
+    })
+    .warnPalette('deep-orange');
 
-        triSkinsProvider.skin('kermit-green', 'Kermit Green')
-        .sidebarTheme('light-green')
-        .toolbarTheme('white-light-green')
-        .logoTheme('light-green')
-        .contentTheme('light-green');
+  uicoreSkinsProvider.skin('kermit-green', 'Kermit Green')
+    .sidebarTheme('light-green')
+    .toolbarTheme('white-light-green')
+    .logoTheme('light-green')
+    .contentTheme('light-green');
 
 
-        /**
-         *  FOR DEMO PURPOSES ALLOW SKIN TO BE SAVED IN A COOKIE
-         *  This overrides any skin set in a call to triSkinsProvider.setSkin if there is a cookie
-         *  REMOVE LINE BELOW FOR PRODUCTION SITE
-         */
-        triSkinsProvider.useSkinCookie(true);
+  /**
+   *  FOR DEMO PURPOSES ALLOW SKIN TO BE SAVED IN A COOKIE
+   *  This overrides any skin set in a call to uicoreSkinsProvider.setSkin if there is a cookie
+   *  REMOVE LINE BELOW FOR PRODUCTION SITE
+   */
+  uicoreSkinsProvider.useSkinCookie(true);
 
-        /**
-         *  SET DEFAULT SKIN
-         */
-        triSkinsProvider.setSkin('cyan-cloud');
-    }
-})();
+  /**
+   *  SET DEFAULT SKIN
+   */
+  uicoreSkinsProvider.setSkin('cyan-cloud');
+}

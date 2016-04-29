@@ -6,7 +6,7 @@ export default function TriLoader() {
     bindToController: true,
     controller: TriLoaderController,
     controllerAs: 'vm',
-    template: '<div flex class="loader padding-100" ng-show="vm.isActive()" layout="column" layout-fill layout-align="center center"><h3 class="md-headline">{{vm.uiCoreSettings.name}}</h3><md-progress-linear md-mode="indeterminate"></md-progress-linear></div>',
+    template: '<div flex class="loader padding-100" ng-show="vm.isActive()" layout="column" layout-fill layout-align="center center"><h3 class="md-headline">{{vm.uicoreSettings.name}}</h3><md-progress-linear md-mode="indeterminate"></md-progress-linear></div>',
     restrict: 'E',
     replace: true,
     scope: {}
@@ -15,8 +15,8 @@ export default function TriLoader() {
 }
 
 /* @ngInject */
-function TriLoaderController($rootScope, triLoaderService, uiCoreSettings) {
+function TriLoaderController($rootScope, triLoaderService, uicoreSettings) {
   var vm = this;
-  vm.uiCoreSettings = uiCoreSettings;
+  vm.uicoreSettings = uicoreSettings;
   vm.isActive = triLoaderService.isActive;
 }

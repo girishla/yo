@@ -10,7 +10,7 @@ export default  function TriWizard() {
   var directive = {
     bindToController: true,
     controller: WizardController,
-    controllerAs: 'uiCoreWizard',
+    controllerAs: 'uicoreWizard',
     restrict: 'A'
   };
   return directive;

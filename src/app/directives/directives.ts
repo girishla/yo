@@ -14,7 +14,7 @@ import {SingleselectDirective} from "../widgets/directives/SingleselectDirective
 import {SimplePagingDirective} from "../widgets/directives/SimplePagingDirective";
 
 
-export default angular.module('elasticui.directives', [])
+export default angular.module('elasticslice.directives', [])
   .directive('euiAggregation', [AggregationDirective])
   .directive('euiFilter', [FilterDirective])
   .directive('euiHighlight', [HighlightDirective])

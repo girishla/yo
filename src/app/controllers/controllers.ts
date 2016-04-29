@@ -1,3 +1,3 @@
 
-export default angular.module('elasticui.controllers', []);
+export default angular.module('elasticslice.controllers', []);
 

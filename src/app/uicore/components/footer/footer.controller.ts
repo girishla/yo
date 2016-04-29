@@ -1,11 +1,11 @@
 'use strict';
 
 /* @ngInject */
-export function FooterController(uiCoreSettings, uiCoreLayout) {
+export function FooterController(uicoreSettings, uicoreLayout) {
   var vm = this;
-  vm.name = uiCoreSettings.name;
-  vm.copyright = uiCoreSettings.copyright;
-  vm.layout = uiCoreLayout.layout;
-  vm.version = uiCoreSettings.version;
+  vm.name = uicoreSettings.name;
+  vm.copyright = uicoreSettings.copyright;
+  vm.layout = uicoreLayout.layout;
+  vm.version = uicoreSettings.version;
 }
 

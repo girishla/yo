@@ -2,53 +2,53 @@
 
 
 /* @ngInject */
-export function triMenuItemDirective() {
+export function uicoreMenuItemDirective() {
   var directive = {
     restrict: 'E',
-    require: '^triMenu',
+    require: '^uicoreMenu',
     scope: {
       item: '='
     },
     // replace: true,
-    template: '<div ng-include="::triMenuItem.item.template"></div>',
-    controller: triMenuItemController,
-    controllerAs: 'uiCoreMenuItem',
+    template: '<div ng-include="::uicoreMenuItem.item.template"></div>',
+    controller: uicoreMenuItemController,
+    controllerAs: 'uicoreMenuItem',
     bindToController: true
   };
   return directive;
 }
 
 /* @ngInject */
-export function triMenuItemController($scope, $mdSidenav, $state, $filter, triBreadcrumbsService) {
-  var triMenuItem = this;
+export function uicoreMenuItemController($scope, $mdSidenav, $state, $filter, uicoreBreadcrumbsService) {
+  var uicoreMenuItem = this;
   // load a template for this directive based on the type ( link | dropdown )
-  triMenuItem.item.template = 'app/uiCore/components/menu/menu-item-' + triMenuItem.item.type + '.tmpl.html';
+  uicoreMenuItem.item.template = 'app/uicore/components/menu/menu-item-' + uicoreMenuItem.item.type + '.tmpl.html';
 
-  switch (triMenuItem.item.type) {
+  switch (uicoreMenuItem.item.type) {
     case 'dropdown':
       // if we have kids reorder them by priority
-      triMenuItem.item.children = $filter('orderBy')(triMenuItem.item.children, 'priority');
-      triMenuItem.toggleDropdownMenu = toggleDropdownMenu;
+      uicoreMenuItem.item.children = $filter('orderBy')(uicoreMenuItem.item.children, 'priority');
+      uicoreMenuItem.toggleDropdownMenu = toggleDropdownMenu;
       // add a check for open event
       $scope.$on('toggleDropdownMenu', function (event, item, open) {
         // if this is the item we are looking for
-        if (triMenuItem.item === item) {
-          triMenuItem.item.open = open;
+        if (uicoreMenuItem.item === item) {
+          uicoreMenuItem.item.open = open;
         }
         else {
-          triMenuItem.item.open = false;
+          uicoreMenuItem.item.open = false;
         }
       });
       // this event is emitted up the tree to open parent menus
       $scope.$on('openParents', function () {
         // openParents event so open the parent item
-        triMenuItem.item.open = true;
+        uicoreMenuItem.item.open = true;
         // also add this to the breadcrumbs
-        triBreadcrumbsService.addCrumb(triMenuItem.item);
+        uicoreBreadcrumbsService.addCrumb(uicoreMenuItem.item);
       });
       break;
     case 'link':
-      triMenuItem.openLink = openLink;
+      uicoreMenuItem.openLink = openLink;
 
       // on init check if this is current menu
       checkItemActive($state.current.name, $state.params);
@@ -61,23 +61,23 @@ export function triMenuItemController($scope, $mdSidenav, $state, $filter, triBr
 
   function checkItemActive(param1?,param2?) {
     // first check if the state is the same
-    triMenuItem.item.active = $state.includes(triMenuItem.item.state, triMenuItem.item.params);
+    uicoreMenuItem.item.active = $state.includes(uicoreMenuItem.item.state, uicoreMenuItem.item.params);
     // if we are now the active item reset the breadcrumbs and open all parent dropdown items
-    if (triMenuItem.item.active) {
-      triBreadcrumbsService.reset();
-      triBreadcrumbsService.addCrumb(triMenuItem.item);
+    if (uicoreMenuItem.item.active) {
+      uicoreBreadcrumbsService.reset();
+      uicoreBreadcrumbsService.addCrumb(uicoreMenuItem.item);
       $scope.$emit('openParents');
     }
   }
 
   function toggleDropdownMenu() {
-    $scope.$parent.$parent.$broadcast('toggleDropdownMenu', triMenuItem.item, !triMenuItem.item.open);
+    $scope.$parent.$parent.$broadcast('toggleDropdownMenu', uicoreMenuItem.item, !uicoreMenuItem.item.open);
   }
 
   function openLink() {
-    var params = angular.isUndefined(triMenuItem.item.params) ? {} : triMenuItem.item.params;
-    $state.go(triMenuItem.item.state, params);
-    triMenuItem.item.active = true;
+    var params = angular.isUndefined(uicoreMenuItem.item.params) ? {} : uicoreMenuItem.item.params;
+    $state.go(uicoreMenuItem.item.state, params);
+    uicoreMenuItem.item.active = true;
     $mdSidenav('left').close();
   }
 }

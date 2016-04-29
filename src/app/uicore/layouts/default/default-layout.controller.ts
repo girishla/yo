@@ -3,7 +3,7 @@
 /**
  * @ngdoc function
  * @name AdminController
- * @module uiCore
+ * @module uicore
  * @kind function
  *
  * @description
@@ -12,9 +12,9 @@
  */
 
     /* @ngInject */
-   export default function DefaultLayoutController($scope, $element, $timeout, $window, uiCoreLayout) {
+   export default function DefaultLayoutController($scope, $element, $timeout, $window, uicoreLayout) {
         // we need to use the scope here because otherwise the expression in md-is-locked-open doesnt work
-        $scope.layout = uiCoreLayout.layout; //eslint-disable-line
+        $scope.layout = uicoreLayout.layout; //eslint-disable-line
         var vm = this;
 
         vm.activateHover = activateHover;
@@ -23,7 +23,7 @@
         ////////////////
 
         function activateHover() {
-            if(uiCoreLayout.layout.sideMenuSize === 'icon') {
+            if(uicoreLayout.layout.sideMenuSize === 'icon') {
                 $element.find('.admin-sidebar-left').addClass('hover');
                 $timeout(function(){
                     $window.dispatchEvent(new Event('resize'));
@@ -32,7 +32,7 @@
         }
 
         function removeHover () {
-            if(uiCoreLayout.layout.sideMenuSize === 'icon') {
+            if(uicoreLayout.layout.sideMenuSize === 'icon') {
                 $element.find('.admin-sidebar-left').removeClass('hover');
                 $timeout(function(){
                     $window.dispatchEvent(new Event('resize'));

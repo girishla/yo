@@ -1,4 +1,3 @@
-'use scrict'
 
 /* @ngInject */
 export function layoutProvider() {
@@ -11,14 +10,14 @@ export function layoutProvider() {
     sideMenuSize: 'full',
     showToolbar: true,
     footer: true,
-    contentTemplateUrl: 'app/uiCore/layouts/default/default-content.tmpl.html',
-    sidebarLeftTemplateUrl: 'app/uiCore/components/menu/menu.tmpl.html',
+    contentTemplateUrl: 'app/uicore/layouts/default/default-content.tmpl.html',
+    sidebarLeftTemplateUrl: 'app/uicore/components/menu/menu.tmpl.html',
     sidebarLeftController: 'MenuController',
-    sidebarRightTemplateUrl: 'app/uiCore/components/notifications-panel/notifications-panel.tmpl.html',
+    sidebarRightTemplateUrl: 'app/uicore/components/notifications-panel/notifications-panel.tmpl.html',
     sidebarRightController: 'NotificationsPanelController',
-    toolbarTemplateUrl: 'app/uiCore/components/toolbars/toolbar.tmpl.html',
+    toolbarTemplateUrl: 'app/uicore/components/toolbars/toolbar.tmpl.html',
     toolbarController: 'DefaultToolbarController',
-    footerTemplateUrl: 'app/uiCore/components/footer/footer.tmpl.html'
+    footerTemplateUrl: 'app/uicore/components/footer/footer.tmpl.html'
   };
   var resetableOptions = ['toolbarSize', 'toolbarShrink', 'toolbarClass', 'contentClass', 'innerContentClass', 'sideMenuSize', 'showToolbar', 'footer', 'contentTemplateUrl', 'sidebarLeftTemplateUrl', 'sidebarLeftController', 'sidebarRightTemplateUrl', 'sidebarRightController', 'toolbarTemplateUrl', 'toolbarController', 'footerTemplateUrl', 'loaderTemplateUrl', 'loaderController'];
   var layout = {};
@@ -62,10 +61,10 @@ export function layoutProvider() {
 }
 
 /* @ngInject */
-export function layoutRunner($rootScope, uiCoreLayout) {
+export function layoutRunner($rootScope, uicoreLayout) {
   // check for $stateChangeStart and update the layouts if we have data.layout set
   // if nothing set reset to defaults for every state
-  var destroyOn = $rootScope.$on('$stateChangeStart', uiCoreLayout.updateLayoutFromState);
+  var destroyOn = $rootScope.$on('$stateChangeStart', uicoreLayout.updateLayoutFromState);
   $rootScope.$on('$destroy', removeWatch);
 
   /////////////

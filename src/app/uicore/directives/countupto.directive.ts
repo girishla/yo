@@ -1,6 +1,6 @@
 'use strict';
-declare function CountUp(any, any, any, any, any, any);
 
+declare var CountUp:any;
 /* @ngInject */
 export default  function countupto($timeout) {
   // Usage:

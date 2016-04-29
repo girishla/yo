@@ -1,8 +1,8 @@
 'use strict';
 
 /* @ngInject */
-export default    function runFunctionRouter($rootScope, $window, $state, $filter, $timeout, triRoute, triBreadcrumbsService) {
-  var breadcrumbs = triBreadcrumbsService.breadcrumbs;
+export default    function runFunctionRouter($rootScope, $window, $state, $filter, $timeout, uicoreRoute, uicoreBreadcrumbsService) {
+  var breadcrumbs = uicoreBreadcrumbsService.breadcrumbs;
 
   // change title when language changes - when a menu item is clicked - on app init
   var menuTitleHandler = $rootScope.$on('changeTitle', function () {
@@ -15,9 +15,9 @@ export default    function runFunctionRouter($rootScope, $window, $state, $filte
 
   function setFullTitle() {
     $timeout(function () {
-      var title = triRoute.title;
+      var title = uicoreRoute.title;
       angular.forEach(breadcrumbs.crumbs, function (crumb) {
-        title += ' ' + triRoute.separator + ' ' + crumb.name;
+        title += ' ' + uicoreRoute.separator + ' ' + crumb.name;
       });
       $window.document.title = title;
     });

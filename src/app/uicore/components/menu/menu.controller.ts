@@ -1,17 +1,17 @@
 /* @ngInject */
-export default    function MenuController(triSettings, triLayout) {
+export default    function MenuController(uicoreSettings, uicoreLayout) {
   var vm = this;
-  vm.layout = triLayout.layout;
+  vm.layout = uicoreLayout.layout;
   vm.sidebarInfo = {
-    appName: triSettings.name,
-    appLogo: triSettings.logo
+    appName: uicoreSettings.name,
+    appLogo: uicoreSettings.logo
   };
   vm.toggleIconMenu = toggleIconMenu;
 
   ////////////
   function toggleIconMenu() {
     var menu = vm.layout.sideMenuSize === 'icon' ? 'full' : 'icon';
-    triLayout.setOption('sideMenuSize', menu);
+    uicoreLayout.setOption('sideMenuSize', menu);
   }
 }
 

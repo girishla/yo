@@ -1,18 +1,13 @@
-(function() {
-    angular
-        .module('app')
-        .controller('ErrorPageController', ErrorPageController);
+/* @ngInject */
+export default  function ErrorPageController($state) {
+  var vm = this;
 
-    /* @ngInject */
-    function ErrorPageController($state) {
-        var vm = this;
+  vm.goHome = goHome;
 
-        vm.goHome = goHome;
+  /////////
 
-        /////////
+  function goHome() {
+    $state.go('uicore.dashboard-analytics');
+  }
+}
 
-        function goHome() {
-            $state.go('triangular.dashboard-analytics');
-        }
-    }
-})();

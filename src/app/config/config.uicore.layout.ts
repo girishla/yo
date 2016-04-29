@@ -1,45 +1,37 @@
-(function() {
-    'use strict';
+/* @ngInject */
+export default    function configLayout(uicoreLayoutProvider) {
+  // set app templates (all in app/layouts folder so you can tailor them to your needs)
 
-    angular
-        .module('elasticslice')
-        .config(config);
+  // loader screen HTML & controller
+  uicoreLayoutProvider.setDefaultOption('loaderTemplateUrl', 'app/layouts/loader/loader.tmpl.html');
+  uicoreLayoutProvider.setDefaultOption('loaderController', 'LoaderController');
 
-    /* @ngInject */
-    function config(triLayoutProvider) {
-        // set app templates (all in app/layouts folder so you can tailor them to your needs)
+  // left sidemenu HTML and controller
+  uicoreLayoutProvider.setDefaultOption('sidebarLeftTemplateUrl', 'app/layouts/leftsidenav/leftsidenav.tmpl.html');
+  uicoreLayoutProvider.setDefaultOption('sidebarLeftController', 'LeftSidenavController');
 
-        // loader screen HTML & controller
-        triLayoutProvider.setDefaultOption('loaderTemplateUrl', 'app/layouts/loader/loader.tmpl.html');
-        triLayoutProvider.setDefaultOption('loaderController', 'LoaderController');
+  // right sidemenu HTML and controller
+  uicoreLayoutProvider.setDefaultOption('sidebarRightTemplateUrl', 'app/layouts/rightsidenav/rightsidenav.tmpl.html');
+  uicoreLayoutProvider.setDefaultOption('sidebarRightController', 'RightSidenavController');
 
-        // left sidemenu HTML and controller
-        triLayoutProvider.setDefaultOption('sidebarLeftTemplateUrl', 'app/layouts/leftsidenav/leftsidenav.tmpl.html');
-        triLayoutProvider.setDefaultOption('sidebarLeftController', 'LeftSidenavController');
+  // top toolbar HTML and controller
+  uicoreLayoutProvider.setDefaultOption('toolbarTemplateUrl', 'app/layouts/toolbar/toolbar.tmpl.html');
+  uicoreLayoutProvider.setDefaultOption('toolbarController', 'ToolbarController');
 
-        // right sidemenu HTML and controller
-        triLayoutProvider.setDefaultOption('sidebarRightTemplateUrl', 'app/layouts/rightsidenav/rightsidenav.tmpl.html');
-        triLayoutProvider.setDefaultOption('sidebarRightController', 'RightSidenavController');
+  // footer HTML
+  uicoreLayoutProvider.setDefaultOption('footerTemplateUrl', 'app/layouts/footer/footer.tmpl.html');
 
-        // top toolbar HTML and controller
-        triLayoutProvider.setDefaultOption('toolbarTemplateUrl', 'app/layouts/toolbar/toolbar.tmpl.html');
-        triLayoutProvider.setDefaultOption('toolbarController', 'ToolbarController');
+  uicoreLayoutProvider.setDefaultOption('toolbarSize', 'default');
 
-        // footer HTML
-        triLayoutProvider.setDefaultOption('footerTemplateUrl', 'app/layouts/footer/footer.tmpl.html');
+  uicoreLayoutProvider.setDefaultOption('toolbarShrink', false);
 
-        triLayoutProvider.setDefaultOption('toolbarSize', 'default');
+  uicoreLayoutProvider.setDefaultOption('toolbarClass', '');
 
-        triLayoutProvider.setDefaultOption('toolbarShrink', false);
+  uicoreLayoutProvider.setDefaultOption('contentClass', '');
 
-        triLayoutProvider.setDefaultOption('toolbarClass', '');
+  uicoreLayoutProvider.setDefaultOption('sideMenuSize', 'full');
 
-        triLayoutProvider.setDefaultOption('contentClass', '');
+  uicoreLayoutProvider.setDefaultOption('showToolbar', true);
 
-        triLayoutProvider.setDefaultOption('sideMenuSize', 'full');
-
-        triLayoutProvider.setDefaultOption('showToolbar', true);
-
-        triLayoutProvider.setDefaultOption('footer', true);
-    }
-})();
+  uicoreLayoutProvider.setDefaultOption('footer', true);
+}

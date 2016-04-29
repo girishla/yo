@@ -1,11 +1,11 @@
 'use strict';
 
 /* @ngInject */
-export default function DefaultToolbarController($scope, $injector, $rootScope, $mdMedia, $state, $element, $filter, $mdUtil, $mdSidenav, $mdToast, $timeout, $document, triBreadcrumbsService, uiCoreSettings, uiCoreLayout) {
+export default function DefaultToolbarController($scope, $injector, $rootScope, $mdMedia, $state, $element, $filter, $mdUtil, $mdSidenav, $mdToast, $timeout, $document, uicoreBreadcrumbsService, uicoreSettings, uicoreLayout) {
   var vm = this;
-  vm.breadcrumbs = triBreadcrumbsService.breadcrumbs;
+  vm.breadcrumbs = uicoreBreadcrumbsService.breadcrumbs;
   vm.emailNew = false;
-  vm.languages = uiCoreSettings.languages;
+  vm.languages = uicoreSettings.languages;
   vm.openSideNav = openSideNav;
   vm.hideMenuButton = hideMenuButton;
   vm.switchLanguage = switchLanguage;
@@ -31,7 +31,7 @@ export default function DefaultToolbarController($scope, $injector, $rootScope, 
         .then(function () {
           $mdToast.show(
             $mdToast.simple()
-              .content($filter('uiCoreTranslate')('Language Changed'))
+              .content($filter('uicoreTranslate')('Language Changed'))
               .position('bottom right')
               .hideDelay(500)
           );
@@ -41,11 +41,11 @@ export default function DefaultToolbarController($scope, $injector, $rootScope, 
   }
 
   function hideMenuButton() {
-    return uiCoreLayout.layout.sideMenuSize !== 'hidden' && $mdMedia('gt-sm');
+    return uicoreLayout.layout.sideMenuSize !== 'hidden' && $mdMedia('gt-sm');
   }
 
   function toggleNotificationsTab(tab) {
-    $rootScope.$broadcast('uiCoreSwitchNotificationTab', tab);
+    $rootScope.$broadcast('uicoreSwitchNotificationTab', tab);
     vm.openSideNav('notifications');
   }
 

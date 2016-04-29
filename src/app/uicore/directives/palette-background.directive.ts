@@ -2,7 +2,7 @@
 
         
 /* @ngInject */
-export default function paletteBackground(triTheming) {
+export default function paletteBackground(uicoreTheming) {
   // Usage:
   // ```html
   // <div palette-background="green:500">Coloured content</div>
@@ -18,13 +18,13 @@ export default function paletteBackground(triTheming) {
 
   function link($scope, $element, attrs) {
     var splitColor = attrs.paletteBackground.split(':');
-    var color = triTheming.getPaletteColor(splitColor[0], splitColor[1]);
+    var color = uicoreTheming.getPaletteColor(splitColor[0], splitColor[1]);
 
     if (angular.isDefined(color)) {
       $element.css({
-        'background-color': triTheming.rgba(color.value),
-        'border-color': triTheming.rgba(color.value),
-        'color': triTheming.rgba(color.contrast)
+        'background-color': uicoreTheming.rgba(color.value),
+        'border-color': uicoreTheming.rgba(color.value),
+        'color': uicoreTheming.rgba(color.contrast)
       });
     }
   }

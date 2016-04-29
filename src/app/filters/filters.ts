@@ -6,7 +6,7 @@ import {RangeFilter} from './RangeFilter'
 import {TimestampFilter} from './TimestampFilter'
 
 
-export default angular.module('elasticui.filters', [])
+export default angular.module('elasticslice.filters', [])
   .filter('euiMap', MapFilter)
   .filter('euiCached', CachedFilter)
   .filter('euiRound', RoundFilter)

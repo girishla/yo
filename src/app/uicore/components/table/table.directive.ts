@@ -11,7 +11,7 @@ export default function triTable($filter) {
       filters: '='
     },
     link: link,
-    templateUrl: 'app/uiCore/components/table/table-directive.tmpl.html'
+    templateUrl: 'app/uicore/components/table/table-directive.tmpl.html'
   };
   return directive;
 

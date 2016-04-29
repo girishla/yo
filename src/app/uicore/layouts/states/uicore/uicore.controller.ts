@@ -3,7 +3,7 @@
 /**
  * @ngdoc function
  * @name AdminController
- * @module uiCore
+ * @module uicore
  * @kind function
  *
  * @description
@@ -12,7 +12,7 @@
  */
 
     /* @ngInject */
- export default  function uiCoreStateController($scope, $rootScope, $timeout, $templateRequest, $compile, $element, $window, uiCoreLayout, triLoaderService) {
+ export default  function uicoreStateController($scope, $rootScope, $timeout, $templateRequest, $compile, $element, $window, uicoreLayout, triLoaderService) {
         var loadingQueue = [];
         var vm = this;
 
@@ -21,14 +21,14 @@
         vm.showLoader = triLoaderService.isActive();
 
         // we need to use the scope here because otherwise the expression in md-is-locked-open doesnt work
-        $scope.layout = uiCoreLayout.layout; //eslint-disable-line
+        $scope.layout = uicoreLayout.layout; //eslint-disable-line
 
 
         ////////////////
 
         function activateHover() {
-            if(uiCoreLayout.layout.sideMenuSize === 'icon') {
-                $element.find('.uiCore-sidenav-left').addClass('hover');
+            if(uicoreLayout.layout.sideMenuSize === 'icon') {
+                $element.find('.uicore-sidenav-left').addClass('hover');
                 $timeout(function(){
                     $window.dispatchEvent(new Event('resize'));
                 }, 300);
@@ -36,10 +36,10 @@
         }
 
         function injectFooterUpdateContent(viewName) {
-            var contentView = $element.find('.uiCore-content');
-            if (viewName === '@uiCore' && angular.isDefined(uiCoreLayout.layout.footerTemplateUrl)) {
+            var contentView = $element.find('.uicore-content');
+            if (viewName === '@uicore' && angular.isDefined(uicoreLayout.layout.footerTemplateUrl)) {
                 // add footer to the content view
-                $templateRequest(uiCoreLayout.layout.footerTemplateUrl)
+                $templateRequest(uicoreLayout.layout.footerTemplateUrl)
                 .then(function(template) {
                     // compile template with current scope and add to the content
                     var linkFn = $compile(template);
@@ -62,8 +62,8 @@
         }
 
         function removeHover () {
-            if(uiCoreLayout.layout.sideMenuSize === 'icon') {
-                $element.find('.uiCore-sidenav-left').removeClass('hover');
+            if(uicoreLayout.layout.sideMenuSize === 'icon') {
+                $element.find('.uicore-sidenav-left').removeClass('hover');
                 $timeout(function(){
                     $window.dispatchEvent(new Event('resize'));
                 }, 300);
@@ -77,7 +77,7 @@
         }
 
         function viewContentLoaded($event, viewName) {
-            if(angular.isDefined(uiCoreLayout.layout.footer) && uiCoreLayout.layout.footer === true) {
+            if(angular.isDefined(uicoreLayout.layout.footer) && uicoreLayout.layout.footer === true) {
                 // inject footer into content
                 injectFooterUpdateContent(viewName);
             }

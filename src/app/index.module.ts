@@ -1,50 +1,44 @@
 /// <reference path="../../typings/main.d.ts" />
 /// <reference path="../../typings/elastic.d.ts" />
 
-import { config } from './index.config';
-import { routerConfig } from './index.route';
-import { runBlock } from './index.run';
-import { MainController } from './main/main.controller';
-
-
-
-import { GithubContributor } from '../app/components/githubContributor/githubContributor.service';
-import { acmeNavbar } from '../app/components/navbar/navbar.directive';
-import { acmeMalarkey } from '../app/components/malarkey/malarkey.directive';
 
 import "./filters/filters";
 import "./controllers/controllers";
 import "./directives/directives";
 import "./services/services"
 import "./uicore/uicore.module"
+import "./pages/pages.module"
+import configChartsJS from "./config/config.chartjs";
+import runBlock from './index.run';
+import {MainController} from './main/main.controller';
+import configLayout from "./config/config.uicore.layout";
+import translateConfig from "./config/config.uicore.settings";
+import configLog from "./config/config.log";
+import themesConfig from "./config/config.uicore.themes";
+import {googleChartApiConfig} from "./config/value.googlechart";
+import ErrorPageController from "./error-page.controller";
+import routeConfigApp from "./config/config.route";
 
+declare var angularDragula:any;
 
-
-declare var malarkey: any;
-declare var moment: moment.MomentStatic;
-
-module elasticui {
+module elasticslice {
   'use strict';
 
-  /*angular.module('yo', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ngResource', 'ui.router', 'ngMaterial', 'toastr'])
-    .constant('malarkey', malarkey)
-    .constant('moment', moment)
-    .config(config)
-    .config(routerConfig)
-    .run(runBlock)
-    .service('githubContributor', GithubContributor)
-    .service('webDevTec', WebDevTecService)
-    .controller('MainController', MainController)
-    .directive('acmeNavbar', acmeNavbar)
-    .directive('acmeMalarkey', acmeMalarkey);*/
-
-  angular.module('elasticui', ['elasticsearch', 'elasticui.filters', 'elasticui.controllers', 'elasticui.services', 'elasticui.directives','ui.router','toastr','uiCore'])
-    .config(config)
+  angular.module('elasticslice', ['elasticsearch', 'elasticslice.filters', 'elasticslice.controllers', 'elasticslice.services', 'elasticslice.directives', 'ui.router', 'uicore', 'ngAnimate', 'ngCookies', 'ngSanitize', 'ngMessages', 'ngMaterial',
+      'googlechart', 'chart.js', 'linkify', 'ui.calendar', 'angularMoment', 'textAngular', 'md.data.table', angularDragula(angular), 'ngFileUpload', 'elastucslice.pages'])
+    .value('googleChartApiConfig', googleChartApiConfig)
     .constant('euiHost', 'http://localhost:3000')
-    .config(routerConfig)
-    .run(runBlock)
     .controller('MainController', MainController)
-    ; // ACTION: change to cluster address;
-
+    .controller('ErrorPageController', ErrorPageController)
+    .run(runBlock)
+    .config(configChartsJS)
+    .config(configLayout)
+    .config(translateConfig)
+    .config(configLog)
+    .config(routeConfigApp)
+    .config(themesConfig)
+    .constant('API_CONFIG', {
+      'url': 'http://localhost:3000/'
+    });
 
 }

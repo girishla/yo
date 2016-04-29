@@ -1,5 +1,5 @@
 /* @ngInject */
-export default function triDefaultContent($rootScope, $compile, $templateRequest, uiCoreLayout) {
+export default function triDefaultContent($rootScope, $compile, $templateRequest, uicoreLayout) {
   // Usage:
   //
   // Creates:
@@ -29,7 +29,7 @@ export default function triDefaultContent($rootScope, $compile, $templateRequest
       var footerElem = contentView.find('#footer');
       if (footerElem.length === 0) {
         // add footer to the content view
-        $templateRequest(uiCoreLayout.layout.footerTemplateUrl)
+        $templateRequest(uicoreLayout.layout.footerTemplateUrl)
           .then(function (template) {
             // compile template with current scope and add to the content
             var linkFn = $compile(template);

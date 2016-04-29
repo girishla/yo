@@ -1,12 +1,7 @@
-(function() {
-    'use strict';
 
-    angular
-        .module('elasticslice')
-        .config(config);
 
     /* @ngInject */
-    function config(ChartJsProvider) {
+export default function configChartsJS(ChartJsProvider) {
         // Configure all charts to use material design colors
         ChartJsProvider.setOptions({
             colours: [
@@ -23,4 +18,4 @@
             responsive: true
         });
     }
-})();
+    configChartsJS.$inject=['ChartJsProvider'];

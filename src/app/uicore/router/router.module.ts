@@ -1,4 +1,4 @@
 'use strict';
 
 angular
-  .module('uiCore.router', []);
+  .module('uicore.router', []);

@@ -1,4 +1,4 @@
 import {ElasticService} from "./ElasticService";
 
-export var services = angular.module('elasticui.services', [])
+export var services = angular.module('elasticslice.services', [])
   .service('es', ElasticService);

@@ -13,7 +13,7 @@ export default  function widget($mdTheming) {
   // Widget for use in dashboards
   var directive = {
     restrict: 'E',
-    templateUrl: 'app/uiCore/components/widget/widget.tmpl.html',
+    templateUrl: 'app/uicore/components/widget/widget.tmpl.html',
     transclude: true,
     replace: true,
     scope: {

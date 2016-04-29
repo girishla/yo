@@ -51,7 +51,7 @@ export default function NotificationsPanelController($scope, $http, $mdSidenav, 
   }, {
     name: 'Sales',
     notifications: [{
-      title: 'uiCore Admin $21',
+      title: 'uicore Admin $21',
       icon: 'zmdi zmdi-shopping-cart',
       iconColor: 'rgb(76, 175, 80)',
       date: moment().startOf('hour')
@@ -61,12 +61,12 @@ export default function NotificationsPanelController($scope, $http, $mdSidenav, 
       iconColor: 'rgb(76, 175, 80)',
       date: moment().startOf('hour')
     }, {
-      title: 'uiCore Admin $21',
+      title: 'uicore Admin $21',
       icon: 'zmdi zmdi-shopping-cart',
       iconColor: 'rgb(76, 175, 80)',
       date: moment().startOf('hour')
     }, {
-      title: 'uiCore Admin $21',
+      title: 'uicore Admin $21',
       icon: 'zmdi zmdi-shopping-cart',
       iconColor: 'rgb(76, 175, 80)',
       date: moment().startOf('hour')
@@ -76,7 +76,7 @@ export default function NotificationsPanelController($scope, $http, $mdSidenav, 
       iconColor: 'rgb(76, 175, 80)',
       date: moment().startOf('hour')
     }, {
-      title: 'uiCore Admin $21',
+      title: 'uicore Admin $21',
       icon: 'zmdi zmdi-shopping-cart',
       iconColor: 'rgb(76, 175, 80)',
       date: moment().startOf('hour')
@@ -150,7 +150,7 @@ export default function NotificationsPanelController($scope, $http, $mdSidenav, 
   ////////////////
 
   // add an event to switch tabs (used when user clicks a menu item before sidebar opens)
-  $scope.$on('uiCoreSwitchNotificationTab', function ($event, tab) {
+  $scope.$on('uicoreSwitchNotificationTab', function ($event, tab) {
     vm.currentTab = tab;
   });
 
@@ -163,7 +163,7 @@ export default function NotificationsPanelController($scope, $http, $mdSidenav, 
   });
 
   function openMail() {
-    $state.go('uiCore-no-scroll.email.inbox');
+    $state.go('uicore-no-scroll.email.inbox');
     vm.close();
   }
 

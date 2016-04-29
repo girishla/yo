@@ -2,10 +2,10 @@ $sidenav-mobile-width: 260px;
 $sidenav-desktop-width: 300px;
 
 // import angular material scss
-@import "angular-material/angular-material.scss";
+@import "../../bower_components/angular-material/angular-material.scss";
 
 // import triangular module scss
-@import "triangular/triangular";
+@import "uicore/uicore";
 
 body {
   color: #212121;
@@ -18,7 +18,7 @@ button, select, html, textarea, input {
 
 // import app scss
 
-@import "scss/material-backgrounds";
+@import "uicore/scss/material-backgrounds";
 
 // Add your CSS here
 

@@ -1,10 +1,14 @@
 'use strict';
-import {skinsProvider, addSkinToScope} from "./skins.provider";
-import themingProvider from "./theming.provider";
+import * as skinsPro from "./skins.provider";
+import * as themingPro from "./theming.provider";
 
 angular
-  .module('uiCore.themes', [])
-  .provider('uiCoreSkins', skinsProvider)
-  .run(addSkinToScope)
-  .provider('uiCoreTheming', themingProvider);
+  .module('uicore.themes', [])
+  .provider('uicoreTheming', themingPro.themingProvider)
+  .provider('uicoreSkins', skinsPro.skinsProvider)
+  .run(skinsPro.addSkinToScope)
+
+
+
+
 
